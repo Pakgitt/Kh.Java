@@ -11,7 +11,7 @@ public class TestUserException {
 		CheckEven ce = new CheckEven();
 		try {
 			int result = ce.printEvent(inputInt);
-			System.out.println(result + " 정상수");
+			System.out.println(result + " 정상수 df");
 		} catch (EvenException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
