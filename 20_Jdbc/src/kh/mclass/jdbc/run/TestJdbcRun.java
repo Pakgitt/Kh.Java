@@ -8,11 +8,11 @@ import java.sql.Statement;
 
 // port : 1521
 
-public class TestJdbcRun {
+public class TestJdbcRun { 
 	public static void main(String[] args) {
 		Connection conn = null;
 		Statement stmt = null;
-		ResultSet rs = null;
+		ResultSet rset = null;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver"); // driver jar 있는지 확인
 			
@@ -34,7 +34,7 @@ public class TestJdbcRun {
 			e.printStackTrace();
 		}finally {
 			try {
-				if(rs != null) rs.close();
+				if(rset != null) rset.close();
 				if(stmt != null) stmt.close();
 				if(conn != null)conn.close();
 			} catch (SQLException e) {
