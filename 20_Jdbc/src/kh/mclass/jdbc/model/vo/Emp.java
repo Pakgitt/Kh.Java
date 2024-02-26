@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class Emp implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+// SQL> desc emp 도메인
 //	 이름                                      널?      유형
 //			 ----------------------------------------- -------- ----------------------------
 //			 EMPNO                                     NOT NULL NUMBER(4)
