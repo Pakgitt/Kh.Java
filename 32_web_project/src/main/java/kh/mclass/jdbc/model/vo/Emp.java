@@ -1,22 +1,24 @@
 package kh.mclass.jdbc.model.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Emp2 {
-
+public class Emp implements Serializable {
+	private static final long serialVersionUID = 1L;
+// SQL> desc emp 도메인
 //	 이름                                      널?      유형
-//	 ----------------------------------------- -------- ----------------------------
-//	 EMPNO                                     NOT NULL NUMBER(4)
-//	 ENAME                                              VARCHAR2(10)
-//	 JOB                                                VARCHAR2(9)
-//	 MGR                                                NUMBER(4)
-//	 HIREDATE                                           DATE
-//	 SAL                                                NUMBER(7,2)
-//	 COMM                                               NUMBER(7,2)
-//	 DEPTNO                                             NUMBER(2)
+//			 ----------------------------------------- -------- ----------------------------
+//			 EMPNO                                     NOT NULL NUMBER(4)
+//			 ENAME                                              VARCHAR2(10)
+//			 JOB                                                VARCHAR2(9)
+//			 MGR                                                NUMBER(4)
+//			 HIREDATE                                           DATE
+//			 SAL                                                NUMBER(7,2)
+//			 COMM                                               NUMBER(7,2)
+//			 DEPTNO                                             NUMBER(2)
 //
-//	SQL>
-
+//			SQL>
+//
 	private int empno;
 	private String ename;
 	private String job;
@@ -26,11 +28,13 @@ public class Emp2 {
 	private double comm;
 	private int deptno;
 
-	public Emp2() {
+	public Emp() {
 
 	}
+	
 
-	public Emp2(int empno, String ename, String job, int mgr, Date hiredate, double sal, double comm, int deptno) {
+	public Emp(int empno, String ename, String job, int mgr, Date hiredate, double sal, double comm, int deptno) {
+		super();
 		this.empno = empno;
 		this.ename = ename;
 		this.job = job;
@@ -39,12 +43,11 @@ public class Emp2 {
 		this.sal = sal;
 		this.comm = comm;
 		this.deptno = deptno;
-
 	}
 
 	@Override
 	public String toString() {
-		return "Emp2 [empno=" + empno + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hiredate=" + hiredate
+		return "Emp [empno=" + empno + ", ename=" + ename + ", job=" + job + ", mgr=" + mgr + ", hiredate=" + hiredate
 				+ ", sal=" + sal + ", comm=" + comm + ", deptno=" + deptno + "]";
 	}
 

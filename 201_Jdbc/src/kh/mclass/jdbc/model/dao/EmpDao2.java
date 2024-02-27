@@ -1,113 +1,91 @@
 package kh.mclass.jdbc.model.dao;
 
-import java.lang.reflect.Array;
+import static kh.mclass.jdbc.common.JdbcTemplate.close;
+
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
-import kh.mclass.jdbc.model.vo.Emp2;
+import kh.mclass.jdbc.model.vo.Emp;
 
 public class EmpDao2 {
-	public ArrayList<Emp2> selectList() {
-		Connection conn = null;
-		Statement stmt = null;
-		ResultSet rs = null;
-		ArrayList<Emp2> empList = null;
-		try {
-			Class.forName("oracle,jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "scott", "TIGER");
-			if (conn != null) {
-				System.out.println("연결 성공");
-				stmt = conn.createStatement();
-				rs = stmt.executeQuery("select * from emp2");
-				empList = new ArrayList<Emp2>();
 
-				while (rs.next()) {
-					Emp2 emp = new Emp2();
-
-					emp.setEmpno(rs.getInt("empno"));
-					emp.setComm(rs.getDouble("comm"));
-					emp.setDeptno(rs.getInt("deptno"));
-					emp.setEname(rs.getString("ename"));
-					emp.setHiredate(rs.getDate("hiredata"));
-					emp.setJob(rs.getString("job"));
-					emp.setMgr(rs.getInt("mgr"));
-					emp.setSal(rs.getDouble("sal"));
-
-					empList.add(emp);
-
-				}
-			} else {
-				System.out.println("연결 실패");
-			}
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (stmt != null)
-					stmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		}
-		return empList;
-
-	}
-
-	public void insertEmp(Emp2 emp) {
-		Connection conn = null;
+	public List<Emp> selectList(Connection conn) {
+		String sql = "select * from emp";
 		PreparedStatement pstmt = null;
-		int result = 0;
+		ResultSet rset = null;
+		List<Emp> result = null;
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "scott", "TIGER");
-			if (conn != null) {
-				System.out.println("연결 성공");
-				String sql = "inster into emp (empno, ename, job, mgr, hiredate, sal, comm, deptno)"
-						+ "values (?,?,?,?,hiredate,?,?,?,)";
-				pstmt = conn.prepareStatement(sql);
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			result = new ArrayList<Emp>();
+			while (rset.next()) {
+				Emp vo = new Emp();
+				vo.setEmpno(rset.getInt("empno"));
+				vo.setEname(rset.getString(2));
+				vo.setJob(rset.getString(3));
+				vo.setMgr(rset.getInt("mgr"));
+				vo.setHiredate(rset.getDate(5));
+				vo.setSal(rset.getDouble("sal"));
+				vo.setComm(rset.getDouble("comm"));
+				vo.setDeptno(rset.getInt("deptno"));
 
-				pstmt.setInt(1, emp.getEmpno());
-				pstmt.setString(2, emp.getEname());
-				pstmt.setString(3, emp.getJob());
-				pstmt.setInt(4, emp.getMgr());
-				pstmt.setDouble(5, emp.getSal());
-				pstmt.setDouble(6, emp.getComm());
-				pstmt.setInt(7, emp.getDeptno());
+				result.add(vo);
 
-				result = pstmt.executeUpdate();
 			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
+			close(rset);
+			close(pstmt);
 		}
+		return result;
 
 	}
 
-	public void deleteEmp() {
+	public int insert(Connection conn, Emp vo) {
+		int result = -1;
+		String sql = "insert into emp values(?,?,?,?,SYSDATE,?,?,?)";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, vo.getEmpno());
+			pstmt.setString(2, vo.getEname());
+			pstmt.setString(3, vo.getJob());
+			pstmt.setInt(4, vo.getMgr());
+			pstmt.setDouble(5, vo.getSal());
+			pstmt.setDouble(6, vo.getComm());
+			pstmt.setInt(7, vo.getDeptno());
+
+			result = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+
+		}
+		System.out.println("emp insert result : " + result);
+		return result;
+	}
+
+	public int delete(Connection conn, int empno) {
+		int result = -1;
+		String sql = "delete from emp where empno ? =";
+		PreparedStatement pstmt = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, empno);
+			result = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		System.out.println("emp delete result : " + result);
+		return result;
 
 	}
 

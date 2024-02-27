@@ -1,15 +1,45 @@
 package kh.mclass.jdbc.model.dao;
 
+import static kh.mclass.jdbc.model.common.JdbcTemplate.close;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-import static kh.mclass.jdbc.model.common.JdbcTemplate.*;
 
 import kh.mclass.jdbc.model.vo.Salgrade;
 
 public class SalgradeDao {
+
+	public Salgrade selectOne(Connection conn, int grade) {
+		Salgrade result = null;
+		String sql = "";
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rset = pstmt.executeQuery();
+			if (rset.next()) {
+				result = new Salgrade();
+				// TODO
+				result.setGrade(rset.getInt("grade"));
+				result.setLosal(rset.getInt("losal"));
+				result.setHisal(rset.getInt("hisal"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+
+		return result;
+
+	}
+
 	public List<Salgrade> selectList(Connection conn) {
 		String sql = "select * from Salgrade";
 		PreparedStatement pstmt = null;
