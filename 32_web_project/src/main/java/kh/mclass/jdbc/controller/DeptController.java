@@ -3,6 +3,7 @@ package kh.mclass.jdbc.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,44 +19,51 @@ import kh.mclass.jdbc.model.vo.Dept;
 @WebServlet("/deptlist")
 public class DeptController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeptController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public DeptController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// 한글 설정
+//		request.setCharacterEncoding("UTF-8");
+//		response.setCharacterEncoding("UTF-8");
+//		response.setContentType("text/html; charset=UTF-8");
 		// Controller 역할
-		//  Service - Dao 호출
-		DeptService service =  new DeptService();
+		// Service - Dao 호출
+		DeptService service = new DeptService();
 		List<Dept> result = service.selectList();
 		System.out.println("나와라ㅏ라라라라");
 		System.out.println(result);
 		// 3. view에 데이터 전달
 		request.setAttribute("data1", result);
-		request.setAttribute("data2", "컨트롤러에서 jsp-view로 값 전달");
-		
-		// 
+		request.setAttribute("data2", "======컨트롤러에서 jsp-view로 값 전달=======");
+
+		//
 		// view를 controller 함
-		request.getRequestDispatcher("/views/deptlist.jsp").forward(request, response);
+		request.getRequestDispatcher("NewFile2.jsp").forward(request, response);
 //		request.getRequestDispatcher("NewFile.jsp").forward(request, response);
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
-
 
 }
