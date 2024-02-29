@@ -35,7 +35,7 @@ public class DeptController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 한글 설정
+//		 한글 설정
 //		request.setCharacterEncoding("UTF-8");
 //		response.setCharacterEncoding("UTF-8");
 //		response.setContentType("text/html; charset=UTF-8");
@@ -44,14 +44,21 @@ public class DeptController extends HttpServlet {
 		DeptService service = new DeptService();
 		List<Dept> result = service.selectList();
 		System.out.println("나와라ㅏ라라라라");
-		System.out.println(result);
+//		System.out.println(result);
 		// 3. view에 데이터 전달
-		request.setAttribute("data1", result);
-		request.setAttribute("data2", "======컨트롤러에서 jsp-view로 값 전달=======");
-
-		//
+		if (result == null) {
+			request.setAttribute("msg", "부서 조회 안됨");
+			request.getRequestDispatcher("/views/errorPage.jsp").forward(request, response);
+		} else {
+			request.setAttribute("volist", result);
+			request.getRequestDispatcher("/views/deptlist.jsp").forward(request, response);
+		}
+//		request.setAttribute("deptlist", result);
+//		request.setAttribute("salgradlist", result);
+//		request.setAttribute("data2", result);
+//		//
 		// view를 controller 함
-		request.getRequestDispatcher("NewFile2.jsp").forward(request, response);
+//		request.getRequestDispatcher("/views/deptlist.jsp").forward(request, response);
 //		request.getRequestDispatcher("NewFile.jsp").forward(request, response);
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}

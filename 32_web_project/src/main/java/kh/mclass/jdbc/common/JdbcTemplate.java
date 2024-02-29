@@ -82,6 +82,7 @@ public class JdbcTemplate {
 			if (con != null)
 				con.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -90,6 +91,7 @@ public class JdbcTemplate {
 			if (stmt != null)
 				stmt.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -98,6 +100,7 @@ public class JdbcTemplate {
 			if (rs != null)
 				rs.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 

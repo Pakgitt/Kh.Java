@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>외않되</title>
 </head>
 <body>
 
@@ -28,7 +28,8 @@
 		%>
 		============<br> 
 		<hi>EL(Expression Language 표현언어로 표현만 가능. for, if,변수선언..등 제어문 없음)</hi><br>
-		${data1.get(0).getDeptno() } | ${data1.get(1).getDname() } | ${data1.get(2).getLoc() }
+		${data1.get(0).getDeptno() } | ${data1.get(1).getDname() } | ${data1.get(2).getLoc() }<br>
+		${data1.get(0).getDeptno() } | ${data1.get(0).getDname() } | ${data1.get(0).getLoc() }<br>
 		
 	</div>
 

@@ -20,4 +20,14 @@
 		<filter-name>EncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+<!--
+ 	<servlet>
+		<servlet-name>ss</servlet-name>
+		<servlet-class>kh.mclass.jdbc.controller.DeptController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ss</servlet-name>
+		<url-pattern>/deptlist</url-pattern>
+	</servlet-mapping> 
+-->
 </web-app>
