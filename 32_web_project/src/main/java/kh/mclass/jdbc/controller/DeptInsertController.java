@@ -1,7 +1,11 @@
 package kh.mclass.jdbc.controller;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Enumeration;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,13 +35,38 @@ public class DeptInsertController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// request Method 확인
+		System.out.println("====request.getParameterNames() - 예) 카테로그별 검색 잡코리아 경력/지역/연봉 .. =====");
+		Enumeration<String> enumNames = request.getParameterNames();
+		System.out.println(enumNames);
+		while(enumNames.hasMoreElements()){
+			String name = enumNames.nextElement();
+			System.out.println(request.getParameter(name));
+		}
+		System.out.println("===request.getParameterValues() - 레시피 재료들.. 선호 장르 선택====");
+		// ?genre=a1&genre=b1&genre=c1
+		String[] genreArr = request.getParameterValues("genre");
+		List<String> genreList = Arrays.asList(genreArr);
+		System.out.println(genreList);
+		System.out.println("===================");
+		// 
+		Map<String, String[]> paraMap = request.getParameterMap();
+		System.out.println(paraMap);
+		System.out.println("=================");
+		Set<String> keyset = paraMap.keySet();
+		for(String key : keyset) {
+			String[] valueArr = paraMap.get(key);
+			List<String> valueList = Arrays.asList(valueArr);
+			System.out.println(key +" : " + valueList);
+		}
 		// ?=no32&dname=asd&loc=local
 		// 5. 데이터 수신
+		
 		String noStr = request.getParameter("no");
 		String dname = request.getParameter("dname");
 		String loc = request.getParameter("loc");
 		
-		int deptno = Integer.parseInt(noStr);
+		int deptno = Integer.parseInt(noStr);	// 무조건 Sring
 		DeptService service = new DeptService();
 		
 		Dept vo = new Dept(deptno, dname, loc);

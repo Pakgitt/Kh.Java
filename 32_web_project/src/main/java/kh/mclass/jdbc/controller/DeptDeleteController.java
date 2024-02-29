@@ -40,7 +40,7 @@ public class DeptDeleteController extends HttpServlet {
 		System.out.println("no : " + noStr);
 		System.out.println("a : " + a);
 		System.out.println("b : " + b);
-
+		 
 		int deptno = Integer.parseInt(noStr);
 		DeptService service = new DeptService();
 		int result = service.delete(deptno);

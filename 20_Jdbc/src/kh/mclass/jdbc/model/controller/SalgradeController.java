@@ -5,7 +5,7 @@
 //import static kh.mclass.jdbc.common.JdbcTemplate.close;
 //import static kh.mclass.jdbc.common.JdbcTemplate.getConnection;
 //import static kh.mclass.jdbc.common.JdbcTemplate.rollback;
-//
+//import static kh.mclass.jdbc.common.JdbcTemplate.*;
 //import java.sql.Connection;
 //import java.util.List;
 //
