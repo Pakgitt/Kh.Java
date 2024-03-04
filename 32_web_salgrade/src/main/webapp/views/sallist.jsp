@@ -1,7 +1,12 @@
 <%@page import="mclass.jdbc.model.vo.Sal"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core"%>
+<%
+String ctxPath = request.getContextPath(); // 선언 시 request 객체 사용 불가
+pageContext.setAttribute("pageScope", "pageScope Value");
+String pcValue = (String)pageContext.getAttribute("pageScope");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +14,32 @@
 <title>Salgrade List</title>
 </head>
 <body>
+
+request
+response
+	${ctxPath}
+	${attribute명 }
+	${getAttribute("attribute") }
+	""
+	null
+<%
+	// response.getWriter() -> out 이름의 객체
+	out.write("aaa");
+	// request.getSession() -> session 이름의 객체
+	session.setAttribute("name", "value");
+	// page == Object 현재 JSP를 class 의미로 봤을때 해당 JSP 객체
+	// pageContext == 외부 환경/설정 정보를 제공하는 객체
+	
+%>
+
+
+
+<br>
+<c:choose>
+<c:when test="5!=6"> 화면에 바로 뿌려지는 부분</c:when>
+<c:when test="5!=6"></c:when>
+<c:when test="5!=6"></c:when>
+</c:choose>
 
 <%
 List<Sal> volist = (List<Sal>) request.getAttribute("volist");

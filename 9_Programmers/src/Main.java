@@ -2,23 +2,15 @@ import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
+
 		Scanner sc = new Scanner(System.in);
-		int start = sc.nextInt();
-		int before = sc.nextInt();
-		int after = sc.nextInt();
+		System.out.println("A : ");
+		int a = sc.nextInt();
+		System.out.println("B : ");
+		int b = sc.nextInt();
 
-		int money = start;
-		int month = 1;
-		while (money < 70) {
-			money += //;
-			month++;
-		}
-		while (0 < 100) {
+		sc.close();
 
-			money += before;
-			month++;
-		}
-
-//		System.out.println(month);
+		System.out.println(a - b);
 	}
 }
