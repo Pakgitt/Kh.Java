@@ -18,35 +18,42 @@ import jdbc.model.vo.Dept;
 @WebServlet("/dept")
 public class DeptController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DeptController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		DeptService service = new DeptService();
-		List<Dept> result = service.selectList();
-		
-		if(result != null) {
-		request.setAttribute("volist", result);
-		request.getRequestDispatcher("views/deptlist.jsp").forward(request, response);
-		}else {
-			request.setAttribute("msg", "에러에러");
-			request.getRequestDispatcher("/views/errorPage.jsp").forward(request, response);
-		}
+	public DeptController() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<Dept> result = null;
+
+		DeptService service = new DeptService();
+		result = service.selectList();
+
+		if (result != null) {
+			request.setAttribute("volist", result);
+			request.getRequestDispatcher("views/deptlist.jsp").forward(request, response);
+		} else {
+			request.setAttribute("msg", "에러에로에러");
+			request.getRequestDispatcher("views/errorPage.jsp").forward(request, response);
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

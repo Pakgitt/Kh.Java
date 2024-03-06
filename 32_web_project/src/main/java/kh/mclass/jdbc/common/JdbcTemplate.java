@@ -10,8 +10,7 @@ import java.util.Properties;
 
 public class JdbcTemplate {
 
-	private JdbcTemplate() {
-	}
+	
 
 	// static 메소드로 만들기
 	public static Connection getConnection() {

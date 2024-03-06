@@ -12,6 +12,10 @@ import java.util.Properties;
 
 public class JdbcTemplate {
 
+	private JdbcTemplate() {
+
+	}
+
 	public static Connection getConnection() {
 		Connection conn = null;
 		Properties prop = new Properties();
@@ -19,32 +23,24 @@ public class JdbcTemplate {
 		try {
 			String currentPath = JdbcTemplate.class.getResource("./").getPath();
 			prop.load(new FileReader(currentPath + "driver.properties"));
+
 			Class.forName(prop.getProperty("jdbc.driver"));
-			conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), 
-					prop.getProperty("jdbc.id"), 
+			conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), prop.getProperty("jdbc.id"),
 					prop.getProperty("jdbc.pw"));
+
 			if (conn != null)
 				System.out.println("연결 성공");
 			else
 				System.out.println("연결 실패");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return conn;
 
 	}
 
-	public static void autocommit(Connection conn, boolean autocommit) {
+	public static void autoCommit(Connection conn, boolean autocommit) {
 		try {
 			if (conn != null)
 				conn.setAutoCommit(autocommit);
@@ -52,10 +48,10 @@ public class JdbcTemplate {
 			e.printStackTrace();
 		}
 	}
-
+	
 	public static void commit(Connection conn) {
 		try {
-			if (conn != null)
+			if(conn != null) 
 				conn.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,6 +74,7 @@ public class JdbcTemplate {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public static void close(PreparedStatement pstmt) {
@@ -87,15 +84,21 @@ public class JdbcTemplate {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public static void close(ResultSet rset) {
 		try {
 			if (rset != null)
 				rset.close();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
+
+//	public static void main(String[] args) {
+//		getConnection();
+//	}
 
 }

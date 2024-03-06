@@ -33,16 +33,18 @@ public class DeptDeleteController extends HttpServlet {
 
 		DeptService service = new DeptService();
 
-		String rmdeptno = request.getParameter("no");
+		String rmdpetno = request.getParameter("deptno");
 
-		int deptno = Integer.parseInt(rmdeptno);
+		int deptno = Integer.parseInt(rmdpetno);
 		int result = service.delete(deptno);
 
 		if (result > 0) {
 			response.sendRedirect(request.getContextPath() + "/dept");
 		} else {
+			request.setAttribute("msg", "delete error");
 			request.getRequestDispatcher("/views/errorPage.jsp").forward(request, response);
 		}
+
 	}
 
 	/**

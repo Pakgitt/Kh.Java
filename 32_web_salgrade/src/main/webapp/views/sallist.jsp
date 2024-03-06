@@ -14,6 +14,11 @@ String pcValue = (String)pageContext.getAttribute("pageScope");
 <title>Salgrade List</title>
 </head>
 <body>
+JSP 제공 내장객체의 scope 분리하여 말하시오. 
+page(pageContext) 
+- request(response 전까지 유지) request.getRequestDispatcher("xxx.jsp").forward(req,res); 
+- session(브라우저 창 닫기까지, removeAttribute(url..)); 과 함께 사용됨. 로그인 정보(로그아웃) 
+- application
 
 request
 response
@@ -23,6 +28,7 @@ response
 	""
 	null
 <%
+	String pcVaString = (String)pageContext.getAttribute("pageScope");
 	// response.getWriter() -> out 이름의 객체
 	out.write("aaa");
 	// request.getSession() -> session 이름의 객체
