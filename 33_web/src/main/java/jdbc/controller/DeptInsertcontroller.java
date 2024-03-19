@@ -33,6 +33,14 @@ public class DeptInsertcontroller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		String addno = request.getParameter("deptno");
 		String dname = request.getParameter("dname");
 		String loc = request.getParameter("loc");
@@ -48,17 +56,6 @@ public class DeptInsertcontroller extends HttpServlet {
 		} else {
 			request.getRequestDispatcher("/views/errorPage.jsp").forward(request, response);
 		}
-
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

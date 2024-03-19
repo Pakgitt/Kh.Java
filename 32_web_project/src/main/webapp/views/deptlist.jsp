@@ -41,7 +41,7 @@ int sum(int a, int b){
 		<br>
 		<h1>===El===</h1>
 		<c:forEach begin="1" end="10" step="3" var="i">
-		${i }<br>
+		<%-- ${i }<br> --%>
 		</c:forEach>
 		<!-- null 체크 -->
 		<c:if test="${empty volist}">
