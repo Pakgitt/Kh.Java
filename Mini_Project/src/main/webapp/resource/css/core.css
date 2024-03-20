@@ -1,23 +1,28 @@
-*{
-    font-family: 나눔바른고딕OFF;
+* {
+    font-family: 나눔바른고딕OTF;
     box-sizing: border-box;
 }
 h1{
-    font-size: 1.8666em;
+    font-size: 1.866em;
     font-weight: 400;
-    line-height: 1.1;
 }
 h2{
-    font-size: 15px;
-    font-weight: 700;
+    font-size: 15px,
+    font-weight 700;
     line-height: 1.5;
 }
 h3{
     line-height: 1.15;
     font-weight: 400;
-    font-size: 0.8667em;
+    font-size:0.8667em;
 }
+h3.tit{
+    float: left;
+    font-size: 1.6em;
+    color: #503396;
+    font-weight: bold;
 
+}
 a{
     text-decoration: none;
 }
