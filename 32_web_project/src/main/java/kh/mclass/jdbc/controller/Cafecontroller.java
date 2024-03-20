@@ -1,4 +1,4 @@
-package web.controller;
+package kh.mclass.jdbc.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class StoreController
+ * Servlet implementation class Cafecontroller
  */
-@WebServlet("/storemain")
-public class StoreController extends HttpServlet {
+@WebServlet("/cafe")
+public class Cafecontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public StoreController() {
+    public Cafecontroller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class StoreController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/storeIndex.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/views/cafe.jsp").forward(request, response);
 	}
 
 	/**
