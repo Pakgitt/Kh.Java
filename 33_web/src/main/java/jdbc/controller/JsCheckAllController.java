@@ -16,13 +16,13 @@ import jdbc.model.vo.Dept;
  * Servlet implementation class DeptController
  */
 @WebServlet("/dept")
-public class DeptController extends HttpServlet {
+public class JsCheckAllController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public DeptController() {
+	public JsCheckAllController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -33,19 +33,7 @@ public class DeptController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		List<Dept> result = null;
-
-		DeptService service = new DeptService();
-		result = service.selectList();
-
-		if (result != null) {
-			request.setAttribute("volist", result);
-			request.getRequestDispatcher("views/deptlist.jsp").forward(request, response);
-		} else {
-			request.setAttribute("msg", "에러에로에러");
-			request.getRequestDispatcher("views/errorPage.jsp").forward(request, response);
-		}
-
+		request.getRequestDispatcher("/WEB-INF/views/checkall.jsp").forward(request, response);
 	}
 
 	/**

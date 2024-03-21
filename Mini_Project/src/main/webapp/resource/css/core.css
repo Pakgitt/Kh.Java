@@ -26,3 +26,19 @@ h3.tit{
 a{
     text-decoration: none;
 }
+
+.tab-list a:hover{
+    background-color: #eee;
+    
+}
+.tab-list a:active{
+    color: #503396;
+    
+}
+/* .tab-list a:visited{
+    background-color: #503396;
+} */
+
+.tab-list a:checked{
+    background-color: #503396;
+}
