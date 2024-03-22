@@ -15,7 +15,7 @@ import jdbc.model.vo.Dept;
 /**
  * Servlet implementation class DeptController
  */
-@WebServlet("/dept")
+@WebServlet("/jquery")
 public class JsCheckAllController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

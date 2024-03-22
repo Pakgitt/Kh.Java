@@ -36,20 +36,27 @@ overflow : hidden;
 
 <script>
 	//const : 상수
-	const itemCount = 10;
+	// const itemCount = 10;
 	$(loadedHandler);
 	function loadedHandler() {
 		/* 1.화면구성 */
-		var htmlValue = "";
-		for (var i = 1; i <= itemCount; i++) {
+		var htmlValue = '';
+		for (var i = 1; i <= 10; i++) {
 			// 백틱 `
-			htmlVal +=
+		htmlValue +=
 			`
 			<div>
 				<lable for="item-x">item - i</lable>
 				<input type="checkbox" class="item" id="item-i" data-itemcode="i">
 			</div>
-			`;
+			`; 
+/* 		 
+			htmlValue += 
+			htmlValue = '<div>'
+			htmlValue = '<lable for="item-x>"item-i"</lable>';
+			htmlValue = '<input type="checkbox" class="item" id="item-i" data-itemcode="i">';
+			htmlValue = '</div>';
+			  */
 		}
 		/* 안의 내용 지우고 넣어줘 : html에 htmlValue를 넣어줘  */
 		$(".checkboxs").html(htmlValue);
@@ -98,18 +105,27 @@ overflow : hidden;
 		console.log($(this).data("itemcode"));
 
 		var lable = $(this).parent().children("lable").html();
-		console.log($(this).parent().children("lable").html());
 		/* 8. checkedItems에 이벤트 발생 바로 그 item을 div로 생성 */
-		if ($(this).prop("checked") == true) {
-			var htmlValue = '';
-			htmlValue = '<div data-itemcode="' + $(this).data("itemcode")
-					+ '">';
-			htmlValue = '<span>' + lable + '</span>';
-			htmlValue = '</div>';
-			$(".checkedItems").append(htmlValue);
+	c
 		} else {
 			/* 9. checkedItems에 이벤트 발생 바로 그 item을 div를 제거 */
-
+				console.log(this);
+			var checkedElement = this;
+			var cehckedElement = $(this);
+			
+			checkedElement.innerHTML = '';
+			$checkedElement.html('');
+			
+			$(".checkItems").children().each(function(index, element){
+				console.log(this);
+				console.log($(this));
+				console.log($(this).data("itemcode"));
+				console.log($checkedElement).data("itemcode"));
+			if($this).data("itemcode") == $checkedElement.data("itemconde")
+			$(this).remove();
+			// for 문은 아니므로 break; 사용 불가
+			return;
+			});
 		}
 	}
 	function updateCheckAllByCheckedItem() {
@@ -139,6 +155,18 @@ overflow : hidden;
 			$(".item").prop("checked", false);
 		}
 		 */
+		 
+		 /* 10. 전체선택 처리 후 ㅎcheckImtes에도 전체 적용 */
+		 if(allChecked){
+			 $(".item").each(function() {
+				 console.log("====");
+				 var temp = ".checkedItems > div[data-itemcode="+$(this).data("itemcode")+"]";
+				 console.log($(temp).length);
+				 if(!$(temp).length){
+					 var labe = $(this).parent().childeren()"label".html();
+				 }				
+			})
+		 }
 	}
 </script>
 <body>
