@@ -15,6 +15,41 @@ public class JdbcTemplate {
 
 	}
 
+	public static Connection getSemiConnection(boolean isLocalhost) {
+		Connection conn = null;
+		Properties prop = new Properties();
+
+		try {
+			String currenPath = JdbcTemplate.class.getResource("./").getPath();
+			prop.load(new FileReader(currenPath + "driver.properties"));
+
+			Class.forName(prop.getProperty("jdbc.driver"));
+			if (isLocalhost) {
+				conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), 
+												   prop.getProperty("jdbc.semim.id"),
+												   prop.getProperty("jdbc.semi.pw"));
+			} else {
+
+				conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), 
+												   prop.getProperty("jdbc.semim.id"),
+												   prop.getProperty("jdbc.semim.pw"));
+			}
+			if (conn != null)
+				System.out.println("연결 성공 세밈");
+			else
+				System.out.println("연결 실패 세밈");
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return conn;
+
+	}
+
 	public static Connection getConnection() {
 		Connection conn = null;
 		Properties prop = new Properties();
@@ -46,7 +81,7 @@ public class JdbcTemplate {
 	public static void main(String[] args) {
 		getConnection();
 	}
-	
+
 	public static void autoCommit(Connection conn, boolean autocommit) {
 
 	}
@@ -70,6 +105,5 @@ public class JdbcTemplate {
 	public static void close(ResultSet rset) {
 
 	}
-
 
 }

@@ -31,11 +31,11 @@ public class OpenApiController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		OpenApiSerivce service = new OpenApiSerivce();
+//		OpenApiSerivce service = new OpenApiSerivce();
 //		List<OpenApiVo> result = service.getCtprvnRltmMesureDnsty();
 //		List<OpenApiVo> result = service.getCtprvnRltmMesureDnstyByJson();
-		Map<String, Object> map = service.getCtprvnRltmMesureDnstyByJson();
-		map = gson.from
+//		Map<String, Object> map = service.getCtprvnRltmMesureDnstyByJson();
+//		map = gson.from
 	}
 
 	/**
