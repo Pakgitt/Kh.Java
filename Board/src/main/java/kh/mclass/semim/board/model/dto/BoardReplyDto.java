@@ -19,7 +19,7 @@ public class BoardReplyDto {
 	private String boardReplyWriter;
 	private String boardReplyContent;
 	private String boardReplyWriteTime; // TIMESTAMP // to_cahr 이용
-	private String boardReplyLogIp;
+	private String boardReplyLogIp; // 필요없음
 	private Integer boardReplyLevel;
 	private Integer boardReplyRef;
 	private Integer boardReplyStep;

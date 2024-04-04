@@ -160,11 +160,9 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-<<<<<<< Updated upstream
-      <Context docBase="33_web" path="/web33" reloadable="true" source="org.eclipse.jst.jee.server:33_web"/><Context docBase="kh_test" path="/example" reloadable="true" source="org.eclipse.jst.jee.server:kh_test"/></Host>
-=======
-      <Context docBase="33_web" path="/web33" reloadable="true" source="org.eclipse.jst.jee.server:33_web"/><Context docBase="MegaBox" path="/megabox" reloadable="true" source="org.eclipse.jst.jee.server:MegaBox"/><Context docBase="Test" path="/example" reloadable="true" source="org.eclipse.jst.jee.server:Test"/></Host>
->>>>>>> Stashed changes
+
+      <Context docBase="Board" path="/board" reloadable="true" source="org.eclipse.jst.jee.server:Board"/><Context docBase="MegaBox" path="/megabox" reloadable="true" source="org.eclipse.jst.jee.server:MegaBox"/></Host>
+
     </Engine>
   </Service>
 </Server>
