@@ -14,14 +14,17 @@ public class BoardListDto {
 
 	private Integer boardId;
 	private String subject;
-	private String wirteTime;
 	private String boardWriter;
+	private String wirteTime;
 	private Integer hit;
+
+	
+	
 
 	@Override
 	public String toString() {
-		return "BoardDto [boardId=" + boardId + ", subject=" + subject + ", wirteTime="
-				+ wirteTime +  ", boardWriter=" + boardWriter + ", hit=" + hit + "]";
+		return "BoardListDto [boardId=" + boardId + ", subject=" + subject + ", boardWriter=" + boardWriter
+				+ ", wirteTime=" + wirteTime + ", hit=" + hit + "]";
 	}
 
 	public BoardListDto(Integer boardId, String subject, String wirteTime, String boardWriter, Integer hit) {

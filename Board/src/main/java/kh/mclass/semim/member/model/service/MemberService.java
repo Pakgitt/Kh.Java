@@ -13,7 +13,18 @@ import kh.mclass.semim.member.model.dto.MemberDto;
 
 public class MemberService {
 	private MemberDao dao = new MemberDao();
-
+	
+	// select checkdId
+	public int selectCheckId(String memId) {
+		int result = -1;
+		Connection conn = getSemiConnection(true);
+		result = dao.selectCheckId(conn, memId);
+		
+		close(conn);
+		return result;
+	}
+	
+	
 	// select list - all
 	public List<MemberDto> selectAllList() {
 		List<MemberDto> result = null;

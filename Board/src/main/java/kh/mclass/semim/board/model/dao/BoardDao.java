@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kh.mclass.semim.board.model.dto.BoardDto;
+import kh.mclass.semim.board.model.dto.BoardListDto;
 //이름           널?       유형             
 //------------ -------- -------------- 
 //BOARD_ID     NOT NULL NUMBER         
@@ -20,6 +21,37 @@ import kh.mclass.semim.board.model.dto.BoardDto;
 //BOARD_WRITER NOT NULL VARCHAR2(20)   
 //HIT          NOT NULL NUMBER    
 public class BoardDao {
+	
+	// select one
+	public List<BoardListDto> selectList(Connection conn) {
+		List<BoardListDto> result = null;
+		String sql = "SELECT BOARD_ID, SUBJECT, BOARD_WRITER, WRITE_TIME, HIT FROM BOARD";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			// ResultSet 처리
+			if (rs.next()) {
+				result = new ArrayList<BoardListDto>();
+				do {
+					BoardListDto dto = new BoardListDto(rs.getInt("BOARD_ID"), rs.getString("SUBJECT"),
+							 rs.getString("BOARD_WRITER"), rs.getString("WRITE_TIME"), rs.getInt("HIT"));
+					result.add(dto);
+				} while (rs.next());
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		close(rs);
+		close(pstmt);
+		return result;
+	}
+	
+	// select all
 	public List<BoardDto> selectAllList(Connection conn) {
 		List<BoardDto> result = null;
 		String sql = "SELECT BOARD_ID, SUBJECT, CONTENT, WRITE_TIME, LOG_IP, BOARD_WRITER, HIT FROM BOARD";
@@ -35,6 +67,7 @@ public class BoardDao {
 				do {
 					BoardDto dto = new BoardDto(rs.getInt("BOARD_ID"), rs.getString("SUBJECT"),
 							rs.getString("CONTENT"), rs.getString("WRITE_TIME"), rs.getString("LOG_IP"), rs.getString("BOARD_WRITER"), rs.getInt("HIT"));
+					result.add(dto);
 				} while (rs.next());
 			}
 

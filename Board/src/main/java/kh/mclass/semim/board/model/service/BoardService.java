@@ -10,12 +10,23 @@ import static jdbc.common.JdbcTemplate.*;
 import jdbc.common.JdbcTemplate;
 import kh.mclass.semim.board.model.dao.BoardDao;
 import kh.mclass.semim.board.model.dto.BoardDto;
+import kh.mclass.semim.board.model.dto.BoardListDto;
 import kh.mclass.semim.member.model.dao.MemberDao;
 import kh.mclass.semim.member.model.dto.MemberDto;
 
 public class BoardService {
 
 	private BoardDao dao = new BoardDao();
+	
+	// select list - list
+	public List<BoardListDto> selectList(){
+		List<BoardListDto> result = null;
+		Connection conn = getSemiConnection(true);
+		result = dao.selectList(conn);
+		close(conn);
+		return result;
+		
+	}
 
 	// select list - all
 	public List<BoardDto> selectAllList() {

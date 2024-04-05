@@ -14,6 +14,29 @@ import kh.mclass.semim.member.model.dto.MemberDto;
 //MEM_PWD   NOT NULL VARCHAR2(20)  
 //MEM_EMAIL NOT NULL VARCHAR2(100)
 public class MemberDao {
+	
+	// select checkId
+	public int selectCheckId(Connection conn, String memId) {
+		int result = -1;
+		String sql = "SELECT COUNT(*) C FROM MEMBER WHERE MEM_ID=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, memId);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt("C");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		close(rs);
+		close(pstmt);
+		return result;
+	}
 	// select list - all
 	public List<MemberDto> selectAllList(Connection conn) {
 		List<MemberDto> result = null;
@@ -71,7 +94,7 @@ public class MemberDao {
 	public int insert(Connection conn, MemberDto dto) {
 		int result = 0;
 		// INSERT INTO MEMBER VALUES('kh1', 'pwd1', 'kh1@bc.com');
-		String sql = "INSERT INTO MEMBER VALUES(?, ?, ?);";
+		String sql = "INSERT INTO MEMBER(MEM_ID, MEM_PWD, MEM_EMAIL) VALUES(?, ?, ?)";
 		PreparedStatement pstmt = null;
 
 		try {
@@ -124,5 +147,7 @@ public class MemberDao {
 		close(pstmt);
 		return result;
 	}
+
+
 
 }
