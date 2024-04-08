@@ -10,9 +10,30 @@ import static jdbc.common.JdbcTemplate.*;
 import jdbc.common.JdbcTemplate;
 import kh.mclass.semim.member.model.dao.MemberDao;
 import kh.mclass.semim.member.model.dto.MemberDto;
+import kh.mclass.semim.member.model.dto.MemberInfoDto;
+import kh.mclass.semim.member.model.dto.MemberLoginDto;
 
 public class MemberService {
 	private MemberDao dao = new MemberDao();
+	
+	//
+	public MemberInfoDto loginGetInfo(MemberLoginDto dto) {
+		MemberInfoDto result = null;
+		Connection conn = getSemiConnection(true);
+		result = dao.loginGetInfo(conn, dto);
+		close(conn);
+		return result;
+	}
+	
+	// select one login
+	public int login(MemberLoginDto dto) {
+		int result = 0;
+		Connection conn = getSemiConnection(true);
+		result = dao.login(conn, dto);
+		
+		close(conn);
+		return result;
+	}
 	
 	// select checkdId
 	public int selectCheckId(String memId) {
@@ -80,4 +101,5 @@ public class MemberService {
 		return result;
 
 	}
+	
 }

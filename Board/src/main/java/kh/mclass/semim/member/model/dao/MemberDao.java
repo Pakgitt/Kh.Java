@@ -9,34 +9,86 @@ import java.util.List;
 import static jdbc.common.JdbcTemplate.*;
 import jdbc.common.JdbcTemplate;
 import kh.mclass.semim.member.model.dto.MemberDto;
+import kh.mclass.semim.member.model.dto.MemberInfoDto;
+import kh.mclass.semim.member.model.dto.MemberLoginDto;
 
 //MEM_ID    NOT NULL VARCHAR2(20)  
 //MEM_PWD   NOT NULL VARCHAR2(20)  
 //MEM_EMAIL NOT NULL VARCHAR2(100)
 public class MemberDao {
+//	 select loginInfo
+		public MemberInfoDto loginGetInfo(Connection conn, MemberLoginDto dto) {
+			MemberInfoDto result = null;
+			String sql = "SELECT MEM_ID, MEM_EMAIL FROM MEMBER WHERE MEM_ID=? AND MEM_PWD=?";
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, dto.getMemId());
+				pstmt.setString(2, dto.getMemPwd());
+				rs = pstmt.executeQuery();
+				if (rs.next()) {
+					result = new MemberInfoDto(rs.getString("MEM_ID"), rs.getString("MEM_EMAIL"));
+				}
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+
+			close(rs);
+			close(pstmt);
+			return result;
+		}
+
 	
+	
+	// select int login
+	public int login(Connection conn, MemberLoginDto dto) {
+		int result = 0;
+		String sql = "SELECT COUNT(*) C FROM MEMBER WHERE MEM_ID=? AND MEM_PWD=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getMemId());
+			pstmt.setString(2, dto.getMemPwd());
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt("C");
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
+		close(rs);
+		close(pstmt);
+		return result;
+	}
+
 	// select checkId
 	public int selectCheckId(Connection conn, String memId) {
 		int result = -1;
 		String sql = "SELECT COUNT(*) C FROM MEMBER WHERE MEM_ID=?";
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
+
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, memId);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
 				result = rs.getInt("C");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		close(rs);
 		close(pstmt);
 		return result;
 	}
+
 	// select list - all
 	public List<MemberDto> selectAllList(Connection conn) {
 		List<MemberDto> result = null;
@@ -147,7 +199,5 @@ public class MemberDao {
 		close(pstmt);
 		return result;
 	}
-
-
 
 }

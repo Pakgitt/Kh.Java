@@ -9,7 +9,6 @@ public class MemberLoginDto {
 	
 	private String memId;
 	private String memPwd;
-	private String memEmail;
 	
 	@Override
 	public String toString() {
@@ -24,6 +23,9 @@ public class MemberLoginDto {
 		super();
 		this.memId = memId;
 		this.memPwd = memPwd;
+	}
+	public String getMemId() {
+		return memId;
 	}
 
 	public String getMemPwd() {
