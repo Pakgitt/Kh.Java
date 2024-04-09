@@ -19,11 +19,13 @@
 
         </header>
     </div>
+    [[${dtolist }]] <br>
+    [[<%=request.getAttribute("dtolist") %>]]
     <div class="wrap-main">
         <div class="container">
             <div class="flexnav">
-                <a href="/semi/views/board_community.html" class="flex community">게시판</a>
-                <a href="/semi/views/board_faq.html" class="flex faq">FAQ</a>
+                <a href="${pageContext.request.contextPath}/community" class="flex community">게시판</a>
+                <a href="${pageContext.request.contextPath}/faq" class="flex faq">FAQ</a>
             </div>
             <div class="location">
                 <div class="location notice"><span>공지사항</span></div>
@@ -44,7 +46,7 @@
             <div class="count-write">
                 <span>436건</span>
                 <div class="community-btn">
-                    <button type="button" onclick="location.href='/semi/views/board_write.html'"
+                    <button type="button" onclick="location.href='${pageContext.request.contextPath}/write'"
                         class="btn write">글작성</button>
                 </div>
             </div>

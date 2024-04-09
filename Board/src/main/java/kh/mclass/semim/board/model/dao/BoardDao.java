@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kh.mclass.semim.board.model.dto.BoardDto;
+import kh.mclass.semim.board.model.dto.BoardInsertDto;
 import kh.mclass.semim.board.model.dto.BoardListDto;
 //이름           널?       유형             
 //------------ -------- -------------- 
@@ -107,10 +108,10 @@ public class BoardDao {
 	}
 
 	// insert
-	public int insert(Connection conn, BoardDto dto) {
+	public int insert(Connection conn, BoardInsertDto dto) {
 		int result = 0;
 		String sql = "INSERT INTO BOARD (BOARD_ID, SUBJECT, CONTENT, WRRITE_TIME, LOG_IP, BOARD_WRITER, HIT)"
-				+ "VALUES (SEQ_BOARD_ID, ?, ?, DEFAULT, ?, DEFAULT, DEFAULT);";
+				+ "VALUES (SEQ_BOARD_ID, ?, ?, DEFAULT, DEFAULT, ?, DEFAULT);";
 		PreparedStatement pstmt = null;
 
 		try {
@@ -118,7 +119,7 @@ public class BoardDao {
 			// ? 처리
 			pstmt.setString(1, dto.getSubject());
 			pstmt.setString(2, dto.getContent());
-			pstmt.setString(3, dto.getLogIp());
+			pstmt.setString(3, dto.getBoardWriter());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package kh.mclass.semim.boarder.controller;
+package kh.mclass.semim.board.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -18,6 +18,7 @@ import kh.mclass.semim.board.model.service.BoardService;
 @WebServlet("/list")
 public class BoardListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private BoardService service = new BoardService();
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,17 +32,10 @@ public class BoardListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/semim/list.jsp").forward(request, response);
-		String boardIdStr = request.getParameter("boardId");
-		int boardId = Integer.parseInt(boardIdStr);
-		String subject = request.getParameter("subject");
-		String boardWriter =request.getParameter("boardWriter");
-		String writeTime = request.getParameter("writeTime");
-		String hitStr = request.getParameter("histr");
-		int hit = Integer.parseInt(hitStr);
+		request.getRequestDispatcher("/WEB-INF/views/semi/list.jsp").forward(request, response);
+		request.setAttribute("dtolist", service.selectList());
 		
-		List<BoardListDto> result = new BoardService().selectList();
-		response.getWriter().append(String.valueOf(result));
+//		List<BoardListDto> result = new BoardService().selectList();
 		
 	}
 

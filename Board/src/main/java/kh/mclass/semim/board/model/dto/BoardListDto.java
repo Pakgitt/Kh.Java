@@ -18,9 +18,6 @@ public class BoardListDto {
 	private String wirteTime;
 	private Integer hit;
 
-	
-	
-
 	@Override
 	public String toString() {
 		return "BoardListDto [boardId=" + boardId + ", subject=" + subject + ", boardWriter=" + boardWriter
@@ -55,5 +52,5 @@ public class BoardListDto {
 	public Integer getHit() {
 		return hit;
 	}
-	
+
 }

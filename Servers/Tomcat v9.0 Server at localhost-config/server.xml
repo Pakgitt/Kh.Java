@@ -161,7 +161,7 @@
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
 
-      <Context docBase="Board" path="/board" reloadable="true" source="org.eclipse.jst.jee.server:Board"/><Context docBase="MegaBox" path="/megabox" reloadable="true" source="org.eclipse.jst.jee.server:MegaBox"/><Context docBase="SemiBoard" path="/SemiBoard" reloadable="true" source="org.eclipse.jst.jee.server:SemiBoard"/></Host>
+      <Context docBase="Board" path="/board" reloadable="true" source="org.eclipse.jst.jee.server:Board"/><Context docBase="MegaBox" path="/megabox" reloadable="true" source="org.eclipse.jst.jee.server:MegaBox"/><Context docBase="SemiBoard" path="/semiboard" reloadable="true" source="org.eclipse.jst.jee.server:SemiBoard"/><Context docBase="Semi_Project" path="/star" reloadable="true" source="org.eclipse.jst.jee.server:Semi_Project"/></Host>
 
     </Engine>
   </Service>

@@ -10,6 +10,7 @@ import static jdbc.common.JdbcTemplate.*;
 import jdbc.common.JdbcTemplate;
 import kh.mclass.semim.board.model.dao.BoardDao;
 import kh.mclass.semim.board.model.dto.BoardDto;
+import kh.mclass.semim.board.model.dto.BoardInsertDto;
 import kh.mclass.semim.board.model.dto.BoardListDto;
 import kh.mclass.semim.member.model.dao.MemberDao;
 import kh.mclass.semim.member.model.dto.MemberDto;
@@ -47,7 +48,7 @@ public class BoardService {
 	}
 
 	// insert
-	public int insert(BoardDto dto) {
+	public int insert(BoardInsertDto dto) {
 		int result = 0;
 		Connection conn = getSemiConnection(true);
 		result = dao.insert(conn, dto);

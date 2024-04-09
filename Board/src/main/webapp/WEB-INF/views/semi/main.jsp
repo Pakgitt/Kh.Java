@@ -9,8 +9,8 @@
 <script src="https:/code.jquery.com/jquery-3.7.1.js"></script>
 </head>
 <body>
-	[[${sssLogin }]]
-	<br> [[<%=session.getAttribute("sssLogin")%>]]
+	[[${sssLogin }]]<br> 
+	[[<%=session.getAttribute("sssLogin")%>]]
 	<h1>Semim Main</h1>
 	<c:choose>
 		<c:when test="${empty sssLogin }">
@@ -62,7 +62,7 @@ function btnMypageClickHandler(){
 	location.href="${pageContext.request.contextPath}/mypage";
 }
 function btnBoardClickHandler(){
-	location.href="${pageContext.request.contextPath}/board/list";	
+	location.href="${pageContext.request.contextPath}/list";	
 }
 function btnLogoutClickHandler(){
 	// get방식으로 사용하지 않음

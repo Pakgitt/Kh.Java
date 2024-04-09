@@ -8,36 +8,27 @@ package semi.board.model.dto;
 //WRITE_TIME   NOT NULL TIMESTAMP(6)   
 //LOG_IP                VARCHAR2(15)   
 //BOARD_WRITER NOT NULL VARCHAR2(20)   
-//HIT          NOT NULL NUMBER         
+//HIT          NOT NULL NUMBER    
 
+//BOARD_ID, TITLE, FILE, WRITER, WRITE_TIME, HIT - SELECT ALL
 
-public class BoardDto {
+public class BoardListDto {
 	private Integer boardId;
 	private String subject;
-	private String content;
+	private String boardWriter;
 	private String writeTime;
-	private String logIp;
-	private String boardWrier;
 	private Integer hit;
 	@Override
-	
 	public String toString() {
-		return "BoardDto [boardId=" + boardId + ", subject=" + subject + ", content=" + content + ", writeTime="
-				+ writeTime + ", logIp=" + logIp + ", boardWrier=" + boardWrier + ", hit=" + hit + "]";
+		return "BoardListDto [boardId=" + boardId + ", subject=" + subject + ", boardWriter=" + boardWriter
+				+ ", writeTime=" + writeTime + ", hit=" + hit + "]";
 	}
-	public BoardDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public BoardDto(Integer boardId, String subject, String content, String writeTime, String logIp, String boardWrier,
-			Integer hit) {
+	public BoardListDto(Integer boardId, String subject, String boardWriter, String writeTime, Integer hit) {
 		super();
 		this.boardId = boardId;
 		this.subject = subject;
-		this.content = content;
+		this.boardWriter = boardWriter;
 		this.writeTime = writeTime;
-		this.logIp = logIp;
-		this.boardWrier = boardWrier;
 		this.hit = hit;
 	}
 	public Integer getBoardId() {
@@ -52,11 +43,11 @@ public class BoardDto {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
-	public String getContent() {
-		return content;
+	public String getBoardWriter() {
+		return boardWriter;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setBoardWriter(String boardWriter) {
+		this.boardWriter = boardWriter;
 	}
 	public String getWriteTime() {
 		return writeTime;
@@ -64,25 +55,14 @@ public class BoardDto {
 	public void setWriteTime(String writeTime) {
 		this.writeTime = writeTime;
 	}
-	public String getLogIp() {
-		return logIp;
-	}
-	public void setLogIp(String logIp) {
-		this.logIp = logIp;
-	}
-	public String getBoardWrier() {
-		return boardWrier;
-	}
-	public void setBoardWrier(String boardWrier) {
-		this.boardWrier = boardWrier;
-	}
 	public Integer getHit() {
 		return hit;
 	}
 	public void setHit(Integer hit) {
 		this.hit = hit;
 	}
+
+	
 	
 	
 }
-
