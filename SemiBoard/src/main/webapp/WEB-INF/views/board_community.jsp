@@ -19,8 +19,19 @@
 
         </header>
     </div>
+    ${dtolist}
     [[${dtolist }]] <br>
     [[<%=request.getAttribute("dtolist") %>]]
+    <br>
+    <c:forEach items="${dtolist}" var="item">
+    번호: ${item.boardNo}<br>
+    제목: ${item.boardTitle}<br>
+    작성자: ${item.boardWriter}<br>
+    작성일: ${item.boardWriteTime}<br>
+    조회수: ${item.hit}<br>
+</c:forEach>
+    
+    
     <div class="wrap-main">
         <div class="container">
             <div class="flexnav">

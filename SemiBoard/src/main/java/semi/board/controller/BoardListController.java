@@ -32,7 +32,7 @@ public class BoardListController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/board_community.jsp").forward(request, response);
 		System.out.println("연결 확인 두 겟");
 		request.setAttribute("dtolist", service.selectAllList());
-		System.out.println(service.selectAllList());
+		System.out.println("컨트롤러 selectAllList" + service.selectAllList());
 	}
 
 	/**

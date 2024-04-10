@@ -21,7 +21,8 @@ public class JdbcTemplate {
 
 		try {
 			String currenPath = JdbcTemplate.class.getResource("./").getPath();
-			prop.load(new FileReader(currenPath + "driver.properties"));
+//			prop.load(new FileReader(currenPath + "driver.properties"));
+			prop.load(new FileReader(currenPath + "homedriver.properties"));
 
 			Class.forName(prop.getProperty("jdbc.driver"));
 				conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), 
@@ -48,27 +49,57 @@ public class JdbcTemplate {
 	}
 
 	public static void autoCommit(Connection conn, boolean autocommit) {
-
+		try {
+			if (conn != null)
+				conn.setAutoCommit(autocommit);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void commit(Connection conn) {
-
+		try {
+			if (conn != null)
+				conn.commit();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void rollback(Connection conn) {
-
+		try {
+			if (conn != null)
+				conn.rollback();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void close(Connection conn) {
-
+		try {
+			if (conn != null)
+				conn.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void close(PreparedStatement pstmt) {
-
+		try {
+			if (pstmt != null)
+				pstmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
-	public static void close(ResultSet rset) {
-
+	public static void close(ResultSet rs) {
+		try {
+			if (rs != null)
+				rs.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

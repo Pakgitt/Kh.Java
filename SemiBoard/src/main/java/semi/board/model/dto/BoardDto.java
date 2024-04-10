@@ -1,87 +1,123 @@
 package semi.board.model.dto;
 
-//이름           널?       유형             
-//------------ -------- -------------- 
-//BOARD_ID     NOT NULL NUMBER         
-//SUBJECT      NOT NULL VARCHAR2(120)  
-//CONTENT      NOT NULL VARCHAR2(4000) 
-//WRITE_TIME   NOT NULL TIMESTAMP(6)   
-//LOG_IP                VARCHAR2(15)   
-//BOARD_WRITER NOT NULL VARCHAR2(20)   
-//HIT          NOT NULL NUMBER         
-
-
+//이름               널?       유형             
+//---------------- -------- -------------- 
+//BOARD_NO         NOT NULL NUMBER         
+//BOARD_WRITER              VARCHAR2(15)   
+//BOARD_TITLE      NOT NULL VARCHAR2(20)   
+//BOARD_CONTENT    NOT NULL VARCHAR2(4000) 
+//BOARD_WRITE_TIME NOT NULL TIMESTAMP(6)   
+//HIT              NOT NULL NUMBER         
+//MEMBER_ADMIN     NOT NULL NUMBER(1)      
+      
 public class BoardDto {
-	private Integer boardId;
-	private String subject;
-	private String content;
-	private String writeTime;
-	private String logIp;
-	private String boardWrier;
+	private Integer boardNo;
+	private String boardWriter;
+	private String boardTitle;
+	private String boardContent;
+	private String boardWriteTime;
 	private Integer hit;
-	@Override
+	private Integer memberAdmin;
 	
+	
+	@Override
 	public String toString() {
-		return "BoardDto [boardId=" + boardId + ", subject=" + subject + ", content=" + content + ", writeTime="
-				+ writeTime + ", logIp=" + logIp + ", boardWrier=" + boardWrier + ", hit=" + hit + "]";
+		return "BoardDto [boardNo=" + boardNo + ", boardWriter=" + boardWriter + ", boardTitle=" + boardTitle + ", boardContent="
+				+ boardContent + ", boardWriteTime=" + boardWriteTime + ", hit=" + hit + ", memberAdmin=" + memberAdmin
+				+ "]";
 	}
+
+
 	public BoardDto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public BoardDto(Integer boardId, String subject, String content, String writeTime, String logIp, String boardWrier,
-			Integer hit) {
+
+
+	public BoardDto(Integer boardNo, String boardWriter, String boardTitle, String boardContent, String boardWriteTime,
+			Integer hit, Integer memberAdmin) {
 		super();
-		this.boardId = boardId;
-		this.subject = subject;
-		this.content = content;
-		this.writeTime = writeTime;
-		this.logIp = logIp;
-		this.boardWrier = boardWrier;
+		this.boardNo = boardNo;
+		this.boardWriter = boardWriter;
+		this.boardTitle = boardTitle;
+		this.boardContent = boardContent;
+		this.boardWriteTime = boardWriteTime;
 		this.hit = hit;
+		this.memberAdmin = memberAdmin;
 	}
-	public Integer getBoardId() {
-		return boardId;
+
+
+	public Integer getBoardNo() {
+		return boardNo;
 	}
-	public void setBoardId(Integer boardId) {
-		this.boardId = boardId;
+
+
+	public void setBoardNo(Integer boardNo) {
+		this.boardNo = boardNo;
 	}
-	public String getSubject() {
-		return subject;
+
+
+	public String getBoardWriter() {
+		return boardWriter;
 	}
-	public void setSubject(String subject) {
-		this.subject = subject;
+
+
+	public void setBoardWriter(String boardWriter) {
+		this.boardWriter = boardWriter;
 	}
-	public String getContent() {
-		return content;
+
+
+	public String getBoardTitle() {
+		return boardTitle;
 	}
-	public void setContent(String content) {
-		this.content = content;
+
+
+	public void setTitle(String boardTitle) {
+		this.boardTitle = boardTitle;
 	}
-	public String getWriteTime() {
-		return writeTime;
+
+
+	public String getBoardContent() {
+		return boardContent;
 	}
-	public void setWriteTime(String writeTime) {
-		this.writeTime = writeTime;
+
+
+	public void setContent(String boardContent) {
+		this.boardContent = boardContent;
 	}
-	public String getLogIp() {
-		return logIp;
+
+
+	public String getBoardWriteTime() {
+		return boardWriteTime;
 	}
-	public void setLogIp(String logIp) {
-		this.logIp = logIp;
+
+
+	public void setBoardWriteTime(String boardWriteTime) {
+		this.boardWriteTime = boardWriteTime;
 	}
-	public String getBoardWrier() {
-		return boardWrier;
-	}
-	public void setBoardWrier(String boardWrier) {
-		this.boardWrier = boardWrier;
-	}
+
+
 	public Integer getHit() {
 		return hit;
 	}
+
+
 	public void setHit(Integer hit) {
 		this.hit = hit;
 	}
+
+
+	public Integer getMemberAdmin() {
+		return memberAdmin;
+	}
+
+
+	public void setMemberAdinm(Integer memberAdmin) {
+		this.memberAdmin = memberAdmin;
+	}
+	
+	
+	
 	
 	
 }
