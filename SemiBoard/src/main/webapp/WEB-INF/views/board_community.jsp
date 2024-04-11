@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Board Community</title>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <script src="https:/code.jquery.com/jquery-3.7.1.js"></script>
     <link href="${pageContext.request.contextPath}/resource/css/board_reset.css"rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resource/css/board_core.css"rel="stylesheet">
@@ -22,6 +23,7 @@
     ${dtolist}
     [[${dtolist }]] <br>
     [[<%=request.getAttribute("dtolist") %>]]
+    [[<%=request.getAttribute("msg") %>]]
     <br>
     <c:forEach items="${dtolist}" var="item">
     번호: ${item.boardNo}<br>

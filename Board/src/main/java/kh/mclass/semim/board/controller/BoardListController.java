@@ -19,30 +19,49 @@ import kh.mclass.semim.board.model.service.BoardService;
 public class BoardListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService service = new BoardService();
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BoardListController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/semi/list.jsp").forward(request, response);
-		request.setAttribute("dtolist", service.selectList());
-		
-//		List<BoardListDto> result = new BoardService().selectList();
-		
+	public BoardListController() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+//		-- 한페이지당 글 수  3개 
+		int pageSize = 10;
+//		-- 화면 하단에 나타날 페이지 5씩
+		int pageBlockSize = 5;
+//		-- 현재 페이지
+		int currentPageNum = 1; // 기본 1
+		// 페이지 지정하고 들어 왔다면.. 현재 페이지를 그 값으로 설정
+		String pageNum = request.getParameter("page");
+		if (pageNum != null && !pageNum.equals("")) {
+			try {
+				currentPageNum = Integer.parseInt(pageNum);
+			} catch (NumberFormatException e) {
+				System.out.println("----NumberFormatException----");
+//				e.printStackTrace();
+			}
+		}
+		request.setAttribute("map", service.selectPageList(pageSize, pageBlockSize, currentPageNum));
+//		request.setAttribute("dtolist", service.selectAllList());
+		request.getRequestDispatcher("/WEB-INF/views/semi/list.jsp").forward(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

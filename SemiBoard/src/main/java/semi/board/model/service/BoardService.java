@@ -23,14 +23,14 @@ public class BoardService {
 	    try {
 //	        System.out.println("selectAllList 메서드 호출됨.");
 	        result = dao.selectAllList(conn);
-//	        System.out.println("dao.selectAllList() 결과: " + result);
+	        System.out.println("dao.selectAllList() 결과: " + result);
 	    } catch (Exception e) {
 //	        System.out.println("selectAllList 메서드에서 예외 발생: " + e.getMessage());
 	        // 예외 처리 추가
 	    } finally {
 	        close(conn);
 	    }
-//	    System.out.println("selectAllList 메서드 실행 완료, 결과: " + result);
+	    System.out.println("selectAllList 메서드 실행 완료, 결과: " + result);
 	    return result;
 //	}
 

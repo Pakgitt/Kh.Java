@@ -29,10 +29,14 @@ public class BoardListController extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/WEB-INF/views/board_community.jsp").forward(request, response);
 		System.out.println("연결 확인 두 겟");
 		request.setAttribute("dtolist", service.selectAllList());
 		System.out.println("컨트롤러 selectAllList" + service.selectAllList());
+//		request.setAttribute("msg", response);
+		request.getRequestDispatcher("/WEB-INF/views/board_community.jsp").forward(request, response);
+		
+		
+
 	}
 
 	/**

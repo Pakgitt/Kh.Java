@@ -36,7 +36,7 @@ public class BoardDao {
 	            BoardListDto dto = new BoardListDto(
 	                rs.getInt("BOARD_NO"),
 	                rs.getString("BOARD_TITLE"),
-//	                rs.getInt("FILE_ID"),
+	                rs.getInt("FILE_ID"),
 	                rs.getString("BOARD_WRITER"),
 	                rs.getString("BOARD_WRITE_TIME"),
 	                rs.getInt("HIT")

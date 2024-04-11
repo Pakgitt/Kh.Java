@@ -22,7 +22,7 @@ public class JdbcTemplate {
 		try {
 			String currenPath = JdbcTemplate.class.getResource("./").getPath();
 //			prop.load(new FileReader(currenPath + "driver.properties"));
-			prop.load(new FileReader(currenPath + "homedriver.properties"));
+			prop.load(new FileReader(currenPath + "driver.properties"));
 
 			Class.forName(prop.getProperty("jdbc.driver"));
 				conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), 

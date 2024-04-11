@@ -21,42 +21,45 @@ import kh.mclass.semim.member.model.dto.MemberInfoDto;
 public class BoardWriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService service = new BoardService();
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BoardWriteController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String prePage = (String) request.getSession().getAttribute("prePage");
-		if(prePage.equals("write")) {
-			request.getSession().removeAttribute("prePage");
-		}
-		
-		request.getRequestDispatcher("/WEB-INF/views/semi/write.jsp").forward(request, response);
+	public BoardWriteController() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		String prePage = (String) request.getSession().getAttribute("prePage");
+		if (prePage != null && prePage.equals("write")) {
+			request.getSession().removeAttribute("prePage");
+		}
+		request.getRequestDispatcher("/WEB-INF/views/semi/write.jsp").forward(request, response);
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		System.out.println("/semi/write dopost()");
 		String subject = request.getParameter("subject");
-		String content = request.getParameter("content"); // jsp파일의 name이랑 동일해야함
+		String content = request.getParameter("content");
 		MemberInfoDto memberInfoDto = (MemberInfoDto) request.getSession().getAttribute("sssLogin");
-		BoardInsertDto boardInsertDto = request.getSession().getAttribute(content);
-		String boardWriter = (String) request.getSession().getAttribute("sssLogin");
 		System.out.println(subject);
 		System.out.println(content);
-		BoardInsertDto dto =  new BoardInsertDto(subject, content, MemberInfoDto.getMemId());
+		BoardInsertDto dto = new BoardInsertDto(subject, content, "test1");
+//		BoardInsertDto dto = new BoardInsertDto(subject, content, "kh1");  //TODO
 		int result = service.insert(dto);
-		
+		response.sendRedirect(request.getContextPath() + "/list?num=" + result);
+
 	}
 
 }

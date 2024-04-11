@@ -15,20 +15,20 @@ public class BoardListDto {
 	private Integer boardId;
 	private String subject;
 	private String boardWriter;
-	private String wirteTime;
+	private String writeTime;
 	private Integer hit;
 
 	@Override
 	public String toString() {
 		return "BoardListDto [boardId=" + boardId + ", subject=" + subject + ", boardWriter=" + boardWriter
-				+ ", wirteTime=" + wirteTime + ", hit=" + hit + "]";
+				+ ", writeTime=" + writeTime + ", hit=" + hit + "]";
 	}
 
-	public BoardListDto(Integer boardId, String subject, String wirteTime, String boardWriter, Integer hit) {
+	public BoardListDto(Integer boardId, String subject, String writeTime, String boardWriter, Integer hit) {
 		super();
 		this.boardId = boardId;
 		this.subject = subject;
-		this.wirteTime = wirteTime;
+		this.writeTime = writeTime;
 		this.boardWriter = boardWriter;
 		this.hit = hit;
 	}
@@ -41,8 +41,8 @@ public class BoardListDto {
 		return subject;
 	}
 
-	public String getWirteTime() {
-		return wirteTime;
+	public String getWriteTime() {
+		return writeTime;
 	}
 
 	public String getBoardWriter() {
