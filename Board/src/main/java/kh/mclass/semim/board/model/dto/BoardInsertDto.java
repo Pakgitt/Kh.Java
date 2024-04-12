@@ -21,44 +21,26 @@ public class BoardInsertDto {
 		return "BoardDto [subject=" + subject + ", content=" + content +", boardWriter=" + boardWriter + "]";
 	}
 
-	public BoardInsertDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public BoardInsertDto(String subject, String content,  String boardWriter) {
 		super();
 		this.subject = subject;
 		this.content = content;
 		this.boardWriter = boardWriter;
 	}
+
 	public String getSubject() {
 		return subject;
-	}
-
-	public void setSubject(String subject) {
-		this.subject = subject;
 	}
 
 	public String getContent() {
 		return content;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	
-
-
 	public String getBoardWriter() {
 		return boardWriter;
 	}
 
-	public void setBoardWriter(String boardWriter) {
-		this.boardWriter = boardWriter;
-	}
-
+	
 
 
 }

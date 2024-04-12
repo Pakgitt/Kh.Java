@@ -35,6 +35,7 @@ public class BoardWriteController extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		
 		String prePage = (String) request.getSession().getAttribute("prePage");
 		if (prePage != null && prePage.equals("write")) {
 			request.getSession().removeAttribute("prePage");
@@ -55,10 +56,10 @@ public class BoardWriteController extends HttpServlet {
 		MemberInfoDto memberInfoDto = (MemberInfoDto) request.getSession().getAttribute("sssLogin");
 		System.out.println(subject);
 		System.out.println(content);
-		BoardInsertDto dto = new BoardInsertDto(subject, content, "test1");
+		BoardInsertDto dto = new BoardInsertDto(subject, content, "kh1");
 //		BoardInsertDto dto = new BoardInsertDto(subject, content, "kh1");  //TODO
-		int result = service.insert(dto);
-		response.sendRedirect(request.getContextPath() + "/list?num=" + result);
+		int sequenceNum  = service.insert(dto);
+		response.sendRedirect(request.getContextPath() + "/list?num=" + sequenceNum );
 
 	}
 
