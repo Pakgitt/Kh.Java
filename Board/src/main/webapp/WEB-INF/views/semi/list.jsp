@@ -38,10 +38,10 @@ ul>li {
 </style>
 <body>
 	[[ 로그인 정보 : ${sssLogin} ]]
-	<br> [[ map : ${map.dtolist }]]
+<%-- 	<br> [[ map : ${map.dtolist }]]
 	<br> [[ totalPageCount : ${map.totalPageCount }]]
 	<br> [[ startPageNum : ${map.startPageNum }]]
-	<br> [[ endPageNum : ${map.endPageNum }]]
+	<br> [[ endPageNum : ${map.endPageNum }]] --%>
 	<br>
 
 

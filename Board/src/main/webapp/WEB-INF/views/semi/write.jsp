@@ -8,7 +8,7 @@
 <title>글작성</title>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<jsp:include page="/WEB-INF/views/semi/common_function.jsp"/>
+<jsp:include page="/WEB-INF/views/semi/common_function.jsp" />
 
 </head>
 
@@ -20,14 +20,23 @@
 	<h1>게시판 write</h1>
 	[[${dtolist}]]
 	<br> [[<%=request.getAttribute("dtolist")%>]]
-	<form id="frm-write">
+	<form id="frm-write" enctype="multipart/form-data">
 		<div>
-			<label>제목</label><input tpye="text" name="subject">
+			<label>제목</label><input type="text" name="subject">
 		</div>
 		<div>
 			<label>내용</label>
 			<textarea name="content" required></textarea>
 		</div>
+		<div>
+			<button type="button" class="btn file">파일추가</button>
+		</div>
+		<!-- 
+		<div>
+			<label>파일첨부</label>
+			<input type="file" required></input>
+		</div>
+		 -->
 		<div>
 			<button type="button" class="btn write">글쓰기</button>
 		</div>
@@ -39,7 +48,25 @@
 		function loadedHandler() {
 			//event 등록
 			$(".btn.write").on("click", btnWriteClickHandler);
+			$(".btn.file").on("click", btnFileClickHandler);
 		}
+		function btnFileClickHandler(){
+			var htmlval = `
+			<div>
+				<label>파일첨부</label>
+				<input type="file" name="uploadfiles" required><button type="button" class="btn file-cancle">취소</button></input>
+			</div>
+			`;
+			$(this).parent().after(htmlval);
+			$(".btn.file-cancle").off("click");
+			$(".btn.file-cancle").on("click", btnFileCancleClickHandler);
+		}
+		
+		function btnFileCancleClickHandler(){
+			console.log("btnFileCancleClickHandler");
+			$(this).parent().remove();
+		}
+		
 		function btnWriteClickHandler() {
 
 			//Login 페이지로 이동
@@ -62,6 +89,7 @@
 			var frm = document.getElementById("frm-write");
 			frm.method = "post"; // content의 길이가 길어서 post방식
 			frm.action = "${pageContext.request.contextPath}/write";
+			frm.enctype="multipart/form-data";
 			frm.submit(); // submit 메소드
 		}
 	</script>

@@ -1,8 +1,6 @@
 package kh.mclass.semim.board.model.dto;
 
-import java.util.List;
-
-public class BoardReplyDto {
+public class BoardReplyListDto {
 
 //	이름                     널?       유형             
 //	---------------------- -------- -------------- 
@@ -17,41 +15,33 @@ public class BoardReplyDto {
 //  BOARD_REPLY_STEP       NOT NULL NUMBER(3)   
 
 	private Integer boardReplyId;
-	private Integer boardId;
 	private String boardReplyWriter;
 	private String boardReplyContent;
 	private String boardReplyWriteTime; // TIMESTAMP // to_cahr 이용
-	private String boardReplyLogIp; // 필요없음
 	private Integer boardReplyLevel;
 	private Integer boardReplyRef;
 	private Integer boardReplyStep;
 
 	@Override
 	public String toString() {
-		return "BoardReplyDto [boardReplyId=" + boardReplyId + ", boardId=" + boardId + ", boardReplyWriter="
+		return "BoardReplyDto [boardReplyId=" + boardReplyId + ", boardReplyWriter="
 				+ boardReplyWriter + ", boardReplyContent=" + boardReplyContent + ", boardReplyWriteTime="
-				+ boardReplyWriteTime + ", boardReplyLogIp=" + boardReplyLogIp + ", boardReplyLevel=" + boardReplyLevel
+				+ boardReplyWriteTime +", boardReplyLevel=" + boardReplyLevel
 				+ ", boardReplyRef=" + boardReplyRef + ", boardReplyStep=" + boardReplyStep + "]";
 	}
 
-
-
-	public BoardReplyDto() {
+	public BoardReplyListDto() {
 		super();
 	}
 
-	
-
-	public BoardReplyDto(Integer boardReplyId, Integer boardId, String boardReplyWriter, String boardReplyContent,
-			String boardReplyWriteTime, String boardReplyLogIp, Integer boardReplyLevel, Integer boardReplyRef,
+	public BoardReplyListDto(Integer boardReplyId, String boardReplyWriter, String boardReplyContent,
+			String boardReplyWriteTime,Integer boardReplyLevel, Integer boardReplyRef,
 			Integer boardReplyStep) {
 		super();
 		this.boardReplyId = boardReplyId;
-		this.boardId = boardId;
 		this.boardReplyWriter = boardReplyWriter;
 		this.boardReplyContent = boardReplyContent;
 		this.boardReplyWriteTime = boardReplyWriteTime;
-		this.boardReplyLogIp = boardReplyLogIp;
 		this.boardReplyLevel = boardReplyLevel;
 		this.boardReplyRef = boardReplyRef;
 		this.boardReplyStep = boardReplyStep;
@@ -59,10 +49,6 @@ public class BoardReplyDto {
 
 	public Integer getBoardReplyId() {
 		return boardReplyId;
-	}
-
-	public Integer getBoardId() {
-		return boardId;
 	}
 
 	public String getBoardReplyWriter() {
@@ -75,10 +61,6 @@ public class BoardReplyDto {
 
 	public String getBoardReplyWriteTime() {
 		return boardReplyWriteTime;
-	}
-
-	public String getBoardReplyLogIp() {
-		return boardReplyLogIp;
 	}
 
 	public Integer getBoardReplyLevel() {

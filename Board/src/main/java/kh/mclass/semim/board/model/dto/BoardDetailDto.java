@@ -18,9 +18,60 @@ public class BoardDetailDto {
 	private String subject;
 	private String content;
 	private String wirteTime;
+	private String logIp;
 	private String boardWriter;
 	private Integer hit;
-	
-	private List<BoardReplyDto> boardReplyList;
+	private List<BoardReplyDto> replydtolist;
+	@Override
+	public String toString() {
+		return "BoardDetailDto [boardId=" + boardId + ", subject=" + subject + ", content=" + content + ", wirteTime="
+				+ wirteTime + "logIp=" + logIp + ", boardWriter=" + boardWriter + ", hit=" + hit + ", replydtolist="
+				+ replydtolist + "]";
+	}
+	public BoardDetailDto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public BoardDetailDto(Integer boardId, String subject, String content, String wirteTime, String logIp, String boardWriter,
+			Integer hit) {
+		super();
+		this.boardId = boardId;
+		this.subject = subject;
+		this.content = content;
+		this.wirteTime = wirteTime;
+		this.logIp = logIp;
+		this.boardWriter = boardWriter;
+		this.hit = hit;
+//		this.boardReplyDtoList = boardReplyDtoList;
+	}
+	public Integer getBoardId() {
+		return boardId;
+	}
+	public String getSubject() {
+		return subject;
+	}
+	public String getContent() {
+		return content;
+	}
+	public String getWirteTime() {
+		return wirteTime;
+	}
+	public String getLogIp() {
+		return logIp;
+	}
+	public String getBoardWriter() {
+		return boardWriter;
+	}
+	public Integer getHit() {
+		return hit;
+	}
+	public List<BoardReplyDto> getReplydtolist() {
+		return replydtolist;
+	}
 
+	public void setReplydtolist(List<BoardReplyDto> boardReplyDtoList) {
+		this.replydtolist = boardReplyDtoList;
+	}
+	
+	
 }

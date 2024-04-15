@@ -12,7 +12,7 @@ import kh.mclass.semim.board.model.service.BoardService;
 /**
  * Servlet implementation class BoardReadController
  */
-@WebServlet("/BoardReadController")
+@WebServlet("/read")
 public class BoardReadController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private BoardService service = new BoardService();
@@ -33,7 +33,7 @@ public class BoardReadController extends HttpServlet {
 		try {
 			int boardId = Integer.parseInt(boardIdStr);
 			request.setAttribute("dto", service.selectOne(boardId));
-			request.getRequestDispatcher("/WEB-INF/views/semi/list.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/views/semi/read.jsp").forward(request, response);
 			
 		}catch(NumberFormatException e){
 			System.out.println("====NumberFormatException====");
