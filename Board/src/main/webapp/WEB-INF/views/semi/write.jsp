@@ -29,6 +29,7 @@
 			<textarea name="content" required></textarea>
 		</div>
 		<div>
+		<!--  에번트 클릭 시 -->
 			<button type="button" class="btn file">파일추가</button>
 		</div>
 		<!-- 
@@ -58,6 +59,7 @@
 			</div>
 			`;
 			$(this).parent().after(htmlval);
+			// JS 중요함 Event 등록 시 중복 등록을 방지함
 			$(".btn.file-cancle").off("click");
 			$(".btn.file-cancle").on("click", btnFileCancleClickHandler);
 		}
@@ -86,6 +88,7 @@
 				alert("제목을 작성해라")
 				return;
 			}
+			// 종요!
 			var frm = document.getElementById("frm-write");
 			frm.method = "post"; // content의 길이가 길어서 post방식
 			frm.action = "${pageContext.request.contextPath}/write";

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<jsp:include page="/WEB-INF/views/semi/common_function.jsp" />
+<jsp:include page="/WEB-INF/views/semi/common_function.jsp"/>
 <style>
 <
 style>body>div.reply-wrap>form div {
@@ -95,10 +95,11 @@ style>body>div.reply-wrap>form div {
 			</div>
 		</div>
 	</form>
-
+	
 	<div class="reply-wrap">
+<%-- 	
 		<c:forEach items="${dto.replydtolist }" var="replydto">
-			<form class="frm-rreply">
+				<form class="frm-rreply">
 				<input type="hidden" name="boardId" value="${dto.boardId }">
 				<input type="hidden" name="boardReplyId" value="${replydto.boardReplyId }"> 
 				<input type="hidden" name="boardReplyLevel" value="${replydto.boardReplyLevel }"> 
@@ -117,10 +118,13 @@ style>body>div.reply-wrap>form div {
 						<button type="button" class="btn rreply" name="">등록</button>
 					</div>
 				</div>
-			</form>
+				</form>
 		</c:forEach>
+	 --%>
 	</div>
-	<div>${dto.replydtolist }</div>
+	<%-- 
+	<div>${dto.replydtolist }</div> 
+	--%>
 
 	<script>
 		$(loadedHandler);
@@ -128,7 +132,19 @@ style>body>div.reply-wrap>form div {
 			//event 등록
 			$(".btn.reply").on("click", btnReplyClickHandler);
 			$(".btn.rreply").on("click", btnRreplyClickHandler);
-			$(".btn.rreplycontent.show").on("click", btnRreplyContentClickHandler);
+			// $(".btn.rreplycontent.show").on("click", btnRreplyContentClickHandler);
+			// displayReplyWrap() 윤슈형 ajax
+			$.ajax({
+				url : "${pageContext.request.contextPath}/board/reply/read.ajax"
+					,method : "post"
+					,error : ajaxErrorHandler
+					,data:{boardId:"${dto.boardId}"}
+					,dataType:"json"
+					,success :  function(result){
+						console.log(result);
+						displayReplyWrap(result);
+					}
+			});
 		}
 		
 		// 댓글

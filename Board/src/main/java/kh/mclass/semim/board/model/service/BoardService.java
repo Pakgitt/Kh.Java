@@ -16,8 +16,10 @@ import kh.mclass.semim.board.model.dto.BoardDetailDto;
 import kh.mclass.semim.board.model.dto.BoardDto;
 import kh.mclass.semim.board.model.dto.BoardInsertDto;
 import kh.mclass.semim.board.model.dto.BoardListDto;
+import kh.mclass.semim.board.model.dto.BoardReadDto;
 import kh.mclass.semim.board.model.dto.BoardReplyListDto;
 import kh.mclass.semim.board.model.dto.BoardReplyWriteDto;
+import kh.mclass.semim.board.model.dto.FileReadDto;
 import kh.mclass.semim.member.model.dao.MemberDao;
 import kh.mclass.semim.member.model.dto.MemberDto;
 
@@ -88,13 +90,15 @@ public class BoardService {
 	}
 
 	// select one
-	public BoardDetailDto selectOne(Integer boardId) {
-		BoardDetailDto result = null;
+	public BoardReadDto selectOne(Integer boardId) {
+		BoardReadDto result = null;
 		Connection conn = getSemiConnection(true);
 		result = dao.selectOne(conn, boardId);
 		if(result != null) {
 			dao.updateReadCount(conn, boardId);
 		}
+		List<FileReadDto> filelist = dao.selectFileList(conn, boardId);
+		result.setFiledtolist(filelist);
 		close(conn);
 		return result;
 	}
@@ -103,11 +107,11 @@ public class BoardService {
 	public int insert(BoardInsertDto dto) {
 		int result = 0;
 		Connection conn = getSemiConnection(true);
-		int sequenceNum = dao.getSequenceNum(conn);
-		result = dao.insert(conn, dto, sequenceNum);
+//		int sequenceNum = dao.getSequenceNum(conn);
+		result = dao.insert(conn, dto);
 		System.out.println(result);
 		close(conn);
-		return sequenceNum;
+		return result;
 	}
 
 	// update

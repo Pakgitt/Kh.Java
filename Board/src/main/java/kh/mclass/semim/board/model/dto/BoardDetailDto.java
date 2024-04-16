@@ -25,15 +25,11 @@ public class BoardDetailDto {
 	@Override
 	public String toString() {
 		return "BoardDetailDto [boardId=" + boardId + ", subject=" + subject + ", content=" + content + ", wirteTime="
-				+ wirteTime + "logIp=" + logIp + ", boardWriter=" + boardWriter + ", hit=" + hit + ", replydtolist="
+				+ wirteTime + ", logIp=" + logIp + ", boardWriter=" + boardWriter + ", hit=" + hit + ", replydtolist="
 				+ replydtolist + "]";
 	}
-	public BoardDetailDto() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public BoardDetailDto(Integer boardId, String subject, String content, String wirteTime, String logIp, String boardWriter,
-			Integer hit) {
+	public BoardDetailDto(Integer boardId, String subject, String content, String wirteTime, String logIp,
+			String boardWriter, Integer hit, List<BoardReplyDto> replydtolist) {
 		super();
 		this.boardId = boardId;
 		this.subject = subject;
@@ -42,36 +38,58 @@ public class BoardDetailDto {
 		this.logIp = logIp;
 		this.boardWriter = boardWriter;
 		this.hit = hit;
-//		this.boardReplyDtoList = boardReplyDtoList;
+		this.replydtolist = replydtolist;
 	}
 	public Integer getBoardId() {
 		return boardId;
 	}
+	public void setBoardId(Integer boardId) {
+		this.boardId = boardId;
+	}
 	public String getSubject() {
 		return subject;
+	}
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 	public String getContent() {
 		return content;
 	}
+	public void setContent(String content) {
+		this.content = content;
+	}
 	public String getWirteTime() {
 		return wirteTime;
+	}
+	public void setWirteTime(String wirteTime) {
+		this.wirteTime = wirteTime;
 	}
 	public String getLogIp() {
 		return logIp;
 	}
+	public void setLogIp(String logIp) {
+		this.logIp = logIp;
+	}
 	public String getBoardWriter() {
 		return boardWriter;
+	}
+	public void setBoardWriter(String boardWriter) {
+		this.boardWriter = boardWriter;
 	}
 	public Integer getHit() {
 		return hit;
 	}
+	public void setHit(Integer hit) {
+		this.hit = hit;
+	}
 	public List<BoardReplyDto> getReplydtolist() {
 		return replydtolist;
 	}
-
-	public void setReplydtolist(List<BoardReplyDto> boardReplyDtoList) {
-		this.replydtolist = boardReplyDtoList;
+	public void setReplydtolist(List<BoardReplyDto> replydtolist) {
+		this.replydtolist = replydtolist;
 	}
+	
+	
 	
 	
 }
